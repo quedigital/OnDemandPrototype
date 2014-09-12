@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<html>
+<head>
+	<title>Test</title>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>	
+
+	<link rel="stylesheet" href="css/vex.css" />
+	<link rel="stylesheet" href="css/vex-theme-os.css" />
+
+</head>
+
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/vex.min.js"></script>
+<script src="js/vex.dialog.min.js"></script>
+
+<body>
+
+<p>Hello there!</p>
+</body>
+
+<script>
+vex.defaultOptions.className = 'vex-theme-os';
+
+vex.dialog.confirm({
+  message: 'Are you absolutely sure you want to destroy the alien planet?',
+  callback: function(value) {
+    return console.log(value ? 'Successfully destroyed the planet.' : 'Chicken.');
+  }
+});
+</script>
+
+</html>

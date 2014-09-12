@@ -1,0 +1,978 @@
+/*
+@import "compass/css3";
+@import "compass/typography";
+@import "compass/css3/user-interface";
+*/
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+/* line 9, ../sass/_initializr.scss */
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+
+/* line 13, ../sass/_initializr.scss */
+body {
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* line 18, ../sass/_initializr.scss */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 23, ../sass/_initializr.scss */
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 28, ../sass/_initializr.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 37, ../sass/_initializr.scss */
+img {
+  vertical-align: middle;
+}
+
+/* line 41, ../sass/_initializr.scss */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 47, ../sass/_initializr.scss */
+textarea {
+  resize: vertical;
+}
+
+/* line 51, ../sass/_initializr.scss */
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/* line 96, ../sass/_initializr.scss */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px;
+}
+
+/* line 103, ../sass/_initializr.scss */
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/* line 110, ../sass/_initializr.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* line 115, ../sass/_initializr.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* line 127, ../sass/_initializr.scss */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* line 136, ../sass/_initializr.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 141, ../sass/_initializr.scss */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+/* line 146, ../sass/_initializr.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/* line 150, ../sass/_initializr.scss */
+.clearfix {
+  *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+@media print {
+  /* line 159, ../sass/_initializr.scss */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* line 167, ../sass/_initializr.scss */
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  /* line 171, ../sass/_initializr.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 175, ../sass/_initializr.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
+  /* line 185, ../sass/_initializr.scss */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  /* line 190, ../sass/_initializr.scss */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 195, ../sass/_initializr.scss */
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+
+  /* line 200, ../sass/_initializr.scss */
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  /* line 204, ../sass/_initializr.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 214, ../sass/_initializr.scss */
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 220, ../sass/_initializr.scss */
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+/* line 1, ../sass/_tutorials.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 7, ../sass/_tutorials.scss */
+html, body {
+  font-family: sans-serif;
+  background-color: #ddd;
+}
+
+/* line 12, ../sass/_tutorials.scss */
+html, body, p, h1 {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 17, ../sass/_tutorials.scss */
+.center-column {
+  display: table;
+  width: 100%;
+}
+
+/* line 22, ../sass/_tutorials.scss */
+.panel {
+  display: table-row;
+  width: 100%;
+}
+
+/* line 27, ../sass/_tutorials.scss */
+.cell {
+  display: table-cell;
+  vertical-align: top;
+}
+
+/* line 32, ../sass/_tutorials.scss */
+.tutorial {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+/* line 37, ../sass/_tutorials.scss */
+.tutorial #captivate-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 47, ../sass/_tutorials.scss */
+.tutorial:before {
+  content: "";
+  display: block;
+  height: 95%;
+  background: url("../cover.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+/* line 57, ../sass/_tutorials.scss */
+#watch-or-try-holder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  /*	background-color: rgba(0, 0, 0, 0);
+  	transition: background-color 1s ease-in-out;*/
+}
+/* line 67, ../sass/_tutorials.scss */
+#watch-or-try-holder #circle {
+  border-radius: 50%;
+  height: 70%;
+  width: 70%;
+  margin: 7.5% auto;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 1s ease-in-out;
+}
+/* line 76, ../sass/_tutorials.scss */
+#watch-or-try-holder #watch-or-try {
+  margin: 0 auto;
+  height: 100%;
+}
+/* line 80, ../sass/_tutorials.scss */
+#watch-or-try-holder #watch-or-try h1 {
+  color: #74BDE6;
+  text-align: center;
+  padding-bottom: .5em;
+  font-style: italic;
+  text-shadow: -3px 3px 6px #000;
+}
+/* line 89, ../sass/_tutorials.scss */
+#watch-or-try-holder .tutorial-button {
+  margin-bottom: 1rem;
+  width: 252px;
+  height: 67px;
+  /*
+  	margin: 0 auto;
+  */
+  cursor: pointer;
+}
+/* line 100, ../sass/_tutorials.scss */
+#watch-or-try-holder #watchit {
+  background: url("../WatchIt-button.png");
+}
+/* line 104, ../sass/_tutorials.scss */
+#watch-or-try-holder #watchit:hover {
+  background: url("../WatchIt-button-hover.png");
+}
+/* line 108, ../sass/_tutorials.scss */
+#watch-or-try-holder #tryit {
+  background: url("../tryit-button.png");
+}
+/* line 112, ../sass/_tutorials.scss */
+#watch-or-try-holder #tryit:hover {
+  background: url("../tryit-button-hover.png");
+}
+/* line 116, ../sass/_tutorials.scss */
+#watch-or-try-holder .bracket {
+  width: 50px;
+  height: 100%;
+}
+/* line 121, ../sass/_tutorials.scss */
+#watch-or-try-holder .bracket.top-left {
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+}
+/* line 126, ../sass/_tutorials.scss */
+#watch-or-try-holder .bracket.bottom-left {
+  border-bottom: 3px solid black;
+  border-left: 3px solid black;
+}
+
+/* line 132, ../sass/_tutorials.scss */
+.header {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+/* line 137, ../sass/_tutorials.scss */
+.header.dark-background {
+  background-color: #333;
+}
+/* line 141, ../sass/_tutorials.scss */
+.header > .centered {
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24pt;
+  text-shadow: -1px 1px 4px #333;
+}
+/* line 148, ../sass/_tutorials.scss */
+.header > .centered .palette-gray {
+  color: #797979;
+  text-shadow: none;
+}
+/* line 153, ../sass/_tutorials.scss */
+.header > .centered .palette-red {
+  color: #D13221;
+  text-shadow: none;
+}
+/* line 159, ../sass/_tutorials.scss */
+.header:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+/* line 168, ../sass/_tutorials.scss */
+.content-holder {
+  background-color: #ffe0d0;
+  border-radius: 0 50px 50px 0;
+  display: none;
+}
+
+/* line 174, ../sass/_tutorials.scss */
+.content {
+  height: 100%;
+  overflow: scroll;
+  padding: 5rem 2rem 2rem 2rem;
+  max-width: 800px;
+  margin: 0 0 0 auto;
+}
+/* line 182, ../sass/_tutorials.scss */
+.content h1 {
+  font-size: 3rem;
+  line-height: 3rem;
+  font-weight: bold;
+  display: inline-block;
+}
+/* line 189, ../sass/_tutorials.scss */
+.content > p {
+  padding: 1rem 4rem 1rem 2rem;
+  line-height: 1.75rem;
+  position: relative;
+}
+/* line 195, ../sass/_tutorials.scss */
+.content .separator-line {
+  border-top: 2px solid #900;
+  margin: 0 4rem 0 2rem;
+  clear: both;
+}
+/* line 201, ../sass/_tutorials.scss */
+.content .steps {
+  padding-left: 2rem;
+}
+/* line 205, ../sass/_tutorials.scss */
+.content h2 {
+  margin: 1rem 4rem 0 2rem;
+}
+/* line 209, ../sass/_tutorials.scss */
+.content .command-button {
+  display: inline-block;
+  width: 36px;
+  height: 21px;
+  background: url("../command-button.png");
+  vertical-align: middle;
+}
+/* line 217, ../sass/_tutorials.scss */
+.content .step {
+  position: relative;
+  margin: 1rem 4rem 1rem 2rem;
+}
+/* line 221, ../sass/_tutorials.scss */
+.content .step .number {
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  font-family: Futura;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 235, ../sass/_tutorials.scss */
+.content .step .number:before {
+  content: "";
+  background-color: #a43;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+/* line 244, ../sass/_tutorials.scss */
+.content .step .number span {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+/* line 254, ../sass/_tutorials.scss */
+.content .step p {
+  margin: 0 2rem 0 2.5rem;
+  padding: .25rem .5rem;
+  transition: background-color ease-in-out 1s;
+}
+/* line 260, ../sass/_tutorials.scss */
+.content .step .current {
+  background-color: white;
+}
+/* line 265, ../sass/_tutorials.scss */
+.content .timesaver {
+  margin: 1rem 4rem 1rem 3rem;
+  font-style: italic;
+}
+/* line 269, ../sass/_tutorials.scss */
+.content .timesaver::before {
+  content: "Timesaver";
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #35a;
+}
+/* line 279, ../sass/_tutorials.scss */
+.content .did-you-know {
+  margin: 2rem 4rem 2rem 3rem;
+  width: 70%;
+  background-color: #c99;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0px -6px 6px rgba(0, 0, 0, 0.4);
+}
+/* line 288, ../sass/_tutorials.scss */
+.content .did-you-know:before {
+  content: "Did You Know?";
+  display: block;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0 0 1rem .5rem;
+}
+/* line 296, ../sass/_tutorials.scss */
+.content .did-you-know span.intro {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 303, ../sass/_tutorials.scss */
+#top-nav {
+  padding-bottom: 1rem;
+}
+
+/* line 307, ../sass/_tutorials.scss */
+.control-bar {
+  width: 100%;
+  height: 100%;
+  display: none;
+  text-align: center;
+  background: linear-gradient(to bottom, #ffa84c 0%, #ff7b0d 100%);
+}
+/* line 314, ../sass/_tutorials.scss */
+.control-bar .controls {
+  background-color: #a54;
+  display: inline-block;
+  border-radius: 20px;
+  border: 4px solid brown;
+  padding: 5px;
+  margin-top: 5px;
+}
+/* line 322, ../sass/_tutorials.scss */
+.control-bar .controls button {
+  background: url("../orange-glossy-buttons-th.png") 0px 0px;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  margin: 0;
+  opacity: .5;
+  cursor: pointer;
+}
+/* line 332, ../sass/_tutorials.scss */
+.control-bar .controls button:hover {
+  opacity: 1.0;
+  -webkit-filter: drop-shadow(-1px 1px 3px rgba(0, 0, 0, 0.5));
+}
+/* line 338, ../sass/_tutorials.scss */
+.control-bar .controls #back {
+  background-position: -55px -99px;
+}
+/* line 342, ../sass/_tutorials.scss */
+.control-bar .controls #pause {
+  background-position: 1px -48px;
+}
+/* line 346, ../sass/_tutorials.scss */
+.control-bar .controls #pause.paused {
+  background-position: 1px 4px;
+}
+/* line 350, ../sass/_tutorials.scss */
+.control-bar .controls #stop {
+  background-position: -55px 4px;
+}
+/* line 354, ../sass/_tutorials.scss */
+.control-bar .controls #next {
+  background-position: 1px -99px;
+}
+/* line 358, ../sass/_tutorials.scss */
+.control-bar .controls button.playback {
+  border: none;
+}
+/* line 362, ../sass/_tutorials.scss */
+.control-bar .controls .check-container {
+  display: inline-block;
+  line-height: 48px;
+  vertical-align: top;
+}
+/* line 367, ../sass/_tutorials.scss */
+.control-bar .controls .check-container input {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 375, ../sass/_tutorials.scss */
+#success-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  display: none;
+  background: url("../checkmark.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* line 388, ../sass/_tutorials.scss */
+.isTable {
+  display: table;
+}
+
+/* line 392, ../sass/_tutorials.scss */
+.isTableRow {
+  display: table-row;
+}
+
+/* line 396, ../sass/_tutorials.scss */
+.isTableCell {
+  display: table-cell;
+}
+
+/* line 400, ../sass/_tutorials.scss */
+.middle {
+  vertical-align: middle;
+}
+
+/* line 404, ../sass/_tutorials.scss */
+#bottom-bar {
+  background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+  width: 100%;
+  height: 100%;
+}
+/* line 409, ../sass/_tutorials.scss */
+#bottom-bar .round-bar {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 1em;
+  padding: .25em .75em;
+}
+
+/* line 416, ../sass/_tutorials.scss */
+#big-title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 35%;
+  padding: 0 2rem 2rem 2rem;
+  z-index: 1;
+  position: relative;
+  display: none;
+}
+/* line 426, ../sass/_tutorials.scss */
+#big-title::after {
+  content: "";
+  background: url(../EllipseBackground.png) no-repeat;
+  background-size: 100% 100%;
+  opacity: .8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+/* line 439, ../sass/_tutorials.scss */
+#big-title p {
+  color: #ccf;
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 3rem;
+  padding: .5rem .25rem 1rem 2rem;
+  text-shadow: -2px 2px 4px #003;
+}
+
+/* line 449, ../sass/_tutorials.scss */
+#nav-container {
+  position: fixed;
+  z-index: 4;
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+/* line 457, ../sass/_tutorials.scss */
+#nav-container .button {
+  background-color: green;
+  transform-origin: 20% 20%;
+  transition: transform .1s linear;
+}
+/* line 463, ../sass/_tutorials.scss */
+#nav-container .button:hover {
+  color: white;
+  box-shadow: 2px 2px 4px #000;
+  transform: scale(1.5);
+}
+/* line 471, ../sass/_tutorials.scss */
+#nav-container i {
+  color: #aaa;
+  font-size: 1.5rem;
+  width: 32px;
+  height: 32px;
+  margin-top: 5px;
+  margin-left: 5px;
+  display: block;
+  line-height: 32px;
+}
+/* line 482, ../sass/_tutorials.scss */
+#nav-container #toc-button {
+  float: left;
+}
+/* line 486, ../sass/_tutorials.scss */
+#nav-container #toc-searchtext {
+  float: right;
+  width: 175px;
+  height: 32px;
+  margin-top: 5px;
+  font-size: 24px;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #666;
+  padding: .5rem;
+  transition: width .5s ease-out, background-color .5s ease-out, color .5s ease-out;
+}
+/* line 499, ../sass/_tutorials.scss */
+#nav-container #toc-searchtext:hover {
+  width: 275px;
+  background-color: black;
+  color: white;
+}
+/* line 505, ../sass/_tutorials.scss */
+#nav-container #toc-searchtext:focus {
+  outline: 0;
+}
+/* line 510, ../sass/_tutorials.scss */
+#nav-container #toc-search {
+  float: right;
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+
+/* line 517, ../sass/_tutorials.scss */
+.toc {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+}
+/* line 527, ../sass/_tutorials.scss */
+.toc .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  /*		pointer-events: none;*/
+  z-index: -1;
+  transform: translate3d(0, 0, 0);
+}
+/* line 538, ../sass/_tutorials.scss */
+.toc .bg.animated {
+  transition: transform .5s linear;
+}
+/* line 543, ../sass/_tutorials.scss */
+.toc ul {
+  width: 100%;
+  margin: 44px 0 0 0;
+  padding: 0;
+  color: black;
+  list-style: none;
+}
+/* line 550, ../sass/_tutorials.scss */
+.toc ul li {
+  line-height: 40px;
+  width: auto;
+  border-radius: 0 18px 18px 0;
+  text-shadow: 0 1px 2px white;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: height .5s linear;
+}
+/* line 561, ../sass/_tutorials.scss */
+.toc ul li.selected {
+  background-color: black !important;
+  color: white;
+  text-shadow: 0 1px 2px black;
+  border: 1px solid black;
+}
+/* line 568, ../sass/_tutorials.scss */
+.toc ul li.hover {
+  color: white;
+  text-shadow: 0 1px 2px black;
+  border: 1px solid black;
+}
+/* line 574, ../sass/_tutorials.scss */
+.toc ul li span {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* line 582, ../sass/_tutorials.scss */
+.message {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  padding: 2rem;
+  display: none;
+}
+
+/* line 590, ../sass/_tutorials.scss */
+.board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}
+/* line 598, ../sass/_tutorials.scss */
+.board .message {
+  margin-top: 2.75rem;
+}
+/* line 602, ../sass/_tutorials.scss */
+.board .card {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  /*250px;*/
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 0 50px rgba(0, 0, 0, 0.6);
+  transform-origin: center top;
+  overflow: hidden;
+}
+/* line 616, ../sass/_tutorials.scss */
+.board .card h1 {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  border-radius: 10px 10px 0 0;
+  margin: 0;
+  padding: 1rem;
+  color: white;
+  width: 100%;
+  background-color: purple;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 629, ../sass/_tutorials.scss */
+.board .card:hover {
+  height: auto !important;
+  cursor: wait;
+}
+/* line 633, ../sass/_tutorials.scss */
+.board .card:hover h1 {
+  color: #ff9;
+  -webkit-filter: drop-shadow(0px 4px 8px black);
+  text-shadow: 0px 1px 0px #888, 0px 2px 0px #666, 0px 3px 0px #444, 0px 4px 5px #001135;
+  transition: color .1s linear, text-shadow .25s ease-in-out, background-color .1s linear;
+}
+/* line 640, ../sass/_tutorials.scss */
+.board .card:hover p {
+  /*				overflow: visible !important;*/
+  /*				height: auto !important;*/
+}
+/* line 645, ../sass/_tutorials.scss */
+.board .card:hover .buttons {
+  position: relative;
+}
+/* line 650, ../sass/_tutorials.scss */
+.board .card p {
+  padding: 1rem;
+  cursor: pointer;
+}
+/* line 655, ../sass/_tutorials.scss */
+.board .card .pholder {
+  overflow: hidden;
+  transition: height .2s ease-out;
+}
+/* line 660, ../sass/_tutorials.scss */
+.board .card .buttons {
+  /*
+  position: absolute;
+  bottom: 0;
+  */
+  position: relative;
+  width: 100%;
+}
+/* line 668, ../sass/_tutorials.scss */
+.board .card .buttons .button {
+  display: inline-block;
+  width: 50%;
+  height: 3rem;
+  /*				line-height: 3rem;*/
+  text-align: center;
+  background-color: #ddd;
+  color: black;
+  font-weight: bold;
+  text-shadow: 0px 1px 0px #fff;
+  border-top: 1px solid #aaa;
+  cursor: pointer;
+  transition: background-color .25s ease-out, color .1s ease-out, text-shadow .1s ease-out;
+  position: relative;
+}
+/* line 683, ../sass/_tutorials.scss */
+.board .card .buttons .button:hover {
+  text-shadow: 0px 1px 0px #000;
+  /*#999;*/
+  background-color: #333;
+  /*#666;*/
+}
+/* line 687, ../sass/_tutorials.scss */
+.board .card .buttons .button:hover .text {
+  color: white;
+}
+/* line 691, ../sass/_tutorials.scss */
+.board .card .buttons .button:hover .icon {
+  color: #bbb;
+}
+/* line 696, ../sass/_tutorials.scss */
+.board .card .buttons .button .text {
+  line-height: 3rem;
+  display: inline-block;
+}
+/* line 701, ../sass/_tutorials.scss */
+.board .card .buttons .button .icon {
+  line-height: 3rem;
+  color: #454ebd;
+  padding-left: .5rem;
+}
+/* line 708, ../sass/_tutorials.scss */
+.board .card .buttons .watchit {
+  float: left;
+  border-radius: 0 0 0 10px;
+  /*
+  background: url("../eye.svg") no-repeat;
+  background-size: contain;
+  background-position: center center;
+  */
+}
+/* line 718, ../sass/_tutorials.scss */
+.board .card .buttons .tryit {
+  float: right;
+  border-radius: 0 0 10px 0;
+  border-left: 1px solid #aaa;
+}
+/* line 724, ../sass/_tutorials.scss */
+.board .card .buttons::after {
+  content: "";
+  display: block;
+  clear: both;
+}
