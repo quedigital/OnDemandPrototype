@@ -44,6 +44,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 				html: "CreatingAliases.html",
 				"watch": {
 					html: "CreatingAliases-watchit/index.html",
+					completed: false,
 					keys: [
 								{ slide: 1, step: 1 },
 								{ slide: 2, step: 2 },
@@ -56,6 +57,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 				},
 				"try": {
 					html: "CreatingAliases-tryit/index.html",
+					completed: false,
 					keys: [
 								{ slide: 1, step: 1 },
 								{ slide: 2, step: 2 },
@@ -72,6 +74,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 				html: "WorkingWithFiles.html",
 				"watch": {
 					html: "WorkingWithFiles-watch/index.html",
+					completed: false,
 					keys: [
 								{ slide: 1, step: 1 },
 								{ slide: 2, step: 2 },
@@ -83,6 +86,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 				},
 				"try": {
 					html: "WorkingWithFiles-try/index.html",
+					completed: false,
 					keys: [
 								{ slide: 1, step: 1 },
 								{ slide: 2, step: 2 },
@@ -96,6 +100,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		];
 		
 	var currentIndex = 1;
+	var currentType = "";
 	
 //	loadContents();	
 	
@@ -157,8 +162,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	}
 	
 	function pushContentDownForTitle () {
-		// TODO: this doesn't account for scrollTop
-		var h = $("#big-title").outerHeight() - $(".content").offset().top;
+		var h = $("#big-title").outerHeight() - $(".content").offset().top - $("#content-pane").scrollTop();
 		
 		$(".content").css("padding-top", h);
 	}
@@ -239,7 +243,10 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	function showSuccessMessage () {
 		var audio = $("#lesson-complete-audio")[0];
 		audio.play();
+
+		toc[currentIndex][currentType].completed = true;
 		
+		/*
 		var targetSelector = "#captivate-holder iframe";
 		
 		var target = $(targetSelector);
@@ -254,6 +261,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		check.position( { my: "center top", at: "center top", of: target, collision: "none" } );
 	
 		check.show("slow");
+		*/
 		
 		showCaptivateControls(false);
 	}
@@ -264,11 +272,31 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 			$(".control-bar").show("blind");
 			$("#bottom-bar").hide("blind");
 		} else {
-			$("#watch-or-try-holder").show("blind");
+			$("#watch-or-try-holder").removeClass("animated");
+			$("#watch-or-try-holder").css("display", "none");
+			
+			$("#watchit-check").prop("checked",  toc[currentIndex]["watch"].completed);
+			$("#tryit-check").prop("checked",  toc[currentIndex]["try"].completed);
+			
+			setTimeout(function () {
+				$("#watch-or-try-holder").addClass("animated");
+			}, 0);
+			
+			setTimeout(function () {
+				$("#watch-or-try-holder").css("transform", "scale(6)");
+				$("#watch-or-try-holder").css("display", "block");
+				
+				setTimeout(function () {
+					$("#watch-or-try-holder").css("transform", "scale(1)");
+				}, 0);
+			}, 2000);
+			
 			$(".control-bar").hide("blind");
 			$("#bottom-bar").show("blind");
 		}
 	}
+	
+	window.showCaptivateControls = showCaptivateControls;
 	
 	function setCaptivateMapping (keys) {
 		captivateMapping = keys;
@@ -289,8 +317,10 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	function playWatchIt () {
 		hideHints();
 		
-		var check = $("#success-box");
-		check.hide();
+//		var check = $("#success-box");
+//		check.hide();
+		
+		currentType = "watch";
 		
 		var item = toc[currentIndex];
 		
@@ -308,8 +338,10 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	function playTryIt () {
 		hideHints();
 		
-		var check = $("#success-box");
-		check.hide();
+//		var check = $("#success-box");
+//		check.hide();
+
+		currentType = "try";
 
 		var item = toc[currentIndex];
 		
@@ -361,9 +393,6 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	function showHint (hint) {
 		switch (hint) {
 			case "watch or try buttons":
-				var message = "Choose one of these options to get started:";
-				$("#circle").css("background-color", "rgba(0, 0, 0, .7)");
-
 //				$("#watch-or-try-holder #watch-or-try").notify(message, { autoHide: false, elementPosition: "top center", className: "info" });
 				break;
 		}
@@ -377,9 +406,17 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		
 		$("#big-title p").text(title);
 		
-		$("#big-title").css("display", "block");
-		$(".content-holder").css("display", "block");
-		$("#watch-or-try-holder").css("display", "block");
+		$("#big-title").hide();
+		$(".content-holder").hide();
+		$("#content-pane").scrollTop(0);
+		
+		setTimeout(function () {
+			$(".content-holder").show("drop", { direction: "right" });
+			$("#big-title").css("display", "block");
+			$("#big-title").addClass("animated rotateInDownLeft");
+		}, 500);
+		
+		showCaptivateControls(false);
 
 		pushContentDownForTitle();
 	}

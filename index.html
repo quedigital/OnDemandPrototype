@@ -14,6 +14,8 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/vex.css"/>	
 	<link rel="stylesheet" type="text/css" href="css/vex-theme-flat-attack.css"/>	
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,800' rel='stylesheet' type='text/css'>
 	
 	<script data-main="main" src="js/require.js"></script>	
 </head>
@@ -34,7 +36,7 @@
 		<div class="centered">OS X Mavericks <span class="palette-gray">on</span><span class="palette-red">Demand</span></div>
 	</div>
 </div>
-<div class="ui-layout-west">
+<div id="content-pane" class="ui-layout-west">
 	<div class="content-holder">
 		<div class="content">
 		</div>
@@ -45,12 +47,25 @@
 		<div id="captivate-holder">
 		</div>
 		<div id="watch-or-try-holder">
-			<div id="circle">
-				<div id="watch-or-try" class="isTable">
+			<div id="watch-or-try" class="isTable">
+				<div class="isTableRow">
 					<div class="isTableCell middle">
-						<div id="watchit" class="tutorial-button"></div>
-						<h1>or</h1>
-						<div id="tryit" class="tutorial-button"></div>
+						<div id="watch-or-try-bg">
+							<div id="watchit" class="check-button">
+								<div class="squaredTwo">
+								  <input disabled type="checkbox" value="None" id="watchit-check" name="check" />
+								  <label for="watchit-check"></label>
+								</div>
+								<span class="label">Watch It</span>
+							</div>
+							<div id="tryit" class="check-button">
+								<div class="squaredTwo">
+								  <input disabled type="checkbox" value="None" id="tryit-check" name="check" />
+								  <label for="tryit-check"></label>
+								</div>
+								<span class="label">Try It</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -61,16 +61,16 @@ html, body, p, h1 {
 	width: 100%;
 	height: 100%;
 	display: none;
-/*	background-color: rgba(0, 0, 0, 0);
-	transition: background-color 1s ease-in-out;*/
 	
-	#circle {
-		border-radius: 50%;
-		height: 70%;
-		width: 70%;
-		margin: 7.5% auto;
-		background-color: rgba(0, 0, 0, 0);
-		transition: background-color 1s ease-in-out;
+	&.animated {
+		transition: transform .5s ease-out;
+	}
+	
+	#watch-or-try-bg {
+		background-color: rgba(0, 0, 0, .5);
+		border-radius: 10px;
+		padding: 10px;
+		text-shadow: -1px 1px 2px rgba(0, 0, 0, .5);
 	}
 	
 	#watch-or-try {
@@ -86,47 +86,22 @@ html, body, p, h1 {
 		}
 	}
 	
-	.tutorial-button {
-		margin-bottom: 1rem;
-		width: 252px;
-		height: 67px;
-	/*
-		margin: 0 auto;
-	*/
-
+	span.label {
+		font-family: 'Open Sans', sans-serif;
+		font-size: 40px;
+		font-weight: 600;
+		vertical-align: middle;
+		margin-left: .25em;
+		color: rgb(24, 15, 231);
+	}
+	
+	.check-button {
 		cursor: pointer;
-	}
-	
-	#watchit {
-		background: url("../WatchIt-button.png");
-	}
-
-	#watchit:hover {
-		background: url("../WatchIt-button-hover.png");
-	}
-
-	#tryit {
-		background: url("../tryit-button.png");
-	}
-
-	#tryit:hover {
-		background: url("../tryit-button-hover.png");
-	}
-	
-	.bracket {
-		width: 50px;
-		height: 100%;
-	}
-	
-	.bracket.top-left {
-		border-top: 3px solid black;
-		border-left: 3px solid black;
-	}
-	
-	.bracket.bottom-left {
-		border-bottom: 3px solid black;
-		border-left: 3px solid black;
-	}
+		
+		&:hover span.label {
+			color: white;
+		}
+	}	
 }	
 
 .header {
@@ -611,7 +586,20 @@ html, body, p, h1 {
 		border-radius: $radius + 2px;
 		box-shadow: 0px 0 50px rgba(0, 0, 0, 0.6);
 		transform-origin: center top;
-		overflow: hidden;
+		/*overflow: hidden;*/
+
+		.new-indicator {
+			position: absolute;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 800;
+			font-size: 18px;
+			top: 0;
+			right: -10px;
+			color: red;
+			text-shadow: 0px 1px 0px #888, 0px 2px 0px #666, 0px 3px 0px #444, 0px 4px 5px #001135;
+			transform: rotate(45deg);
+			z-index: 1000;
+		}
 		
 		h1 {
 			font-size: 1.5rem;
@@ -727,5 +715,51 @@ html, body, p, h1 {
 				clear: both;
 			}
 		}		
+	}
+}
+
+.squaredTwo {
+	width: 48px;
+	height: 48px;
+	line-height: 48px;
+	position: relative;
+	background: #fcfff4;
+	@include background(linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%));
+	@include box-shadow(inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5));
+	display: inline-block;
+	label {
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		position: absolute;
+		left: 4px;
+		top: 4px;
+		@include background(linear-gradient(top, #222 0%, #45484d 100%));
+		@include box-shadow(inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1));
+		&:after {
+			content: '';
+			width: 25px;
+			height: 15px;
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			border: 6px solid #4AC54A;
+			border-top: none;
+			border-right: none;
+			background: transparent;
+			@include opacity(0);
+			@include transform(rotate(-45deg));
+		}
+		/*
+		&:hover::after {
+			@include opacity(.3);
+		}
+		*/
+	}
+	input[type=checkbox] {
+		visibility: hidden;
+		&:checked + label:after {
+			@include opacity(1);
+		}	 
 	}
 }

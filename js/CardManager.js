@@ -4,6 +4,8 @@ define(["Helpers"], function (Helpers) {
 	
 	var NUM_CHAPTERS = 21;
 	
+	var cardCount = 0;
+	
 	function getColorForChapter (ch) {
 		var step = Math.ceil(255 / NUM_CHAPTERS);
 
@@ -185,6 +187,11 @@ define(["Helpers"], function (Helpers) {
 		card.chapter = chapter;
 		card.title = title;
 		card.data( { "card-color": color, "card-highlightColor": Helpers.lighterColor(color, .2) } );
+		
+		if ((cardCount + 2) % 5 == 0 || (cardCount + 5) % 8 == 0) {
+			$("<div>").addClass("new-indicator").text("New!").appendTo(card);
+		}
+		cardCount++;
 		
 		$("<h1>").text(title).appendTo(card);
 		var pholder = $("<div>").addClass("pholder").appendTo(card);
