@@ -298,10 +298,10 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		check.show("slow");
 		*/
 		
-		showCaptivateControls(false);
+		showCaptivateControls(false, true);
 	}
 	
-	function showCaptivateControls (show) {
+	function showCaptivateControls (show, showWatchOrTry) {
 		if (show) {
 			$("#watch-or-try-holder").hide("highlight");
 			$(".control-bar").show("blind");
@@ -313,18 +313,20 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 			$("#watchit-check").prop("checked",  toc[currentIndex]["watch"].completed);
 			$("#tryit-check").prop("checked",  toc[currentIndex]["try"].completed);
 			
-			setTimeout(function () {
-				$("#watch-or-try-holder").addClass("animated");
-			}, 0);
-			
-			setTimeout(function () {
-				$("#watch-or-try-holder").css("transform", "scale(6)");
-				$("#watch-or-try-holder").css("display", "block");
-				
+			if (showWatchOrTry) {
 				setTimeout(function () {
-					$("#watch-or-try-holder").css("transform", "scale(1)");
+					$("#watch-or-try-holder").addClass("animated");
 				}, 0);
-			}, 2000);
+			
+				setTimeout(function () {
+					$("#watch-or-try-holder").css("transform", "scale(6)");
+					$("#watch-or-try-holder").css("display", "block");
+				
+					setTimeout(function () {
+						$("#watch-or-try-holder").css("transform", "scale(1)");
+					}, 0);
+				}, 2000);
+			}
 			
 			$(".control-bar").hide("blind");
 			$("#bottom-bar").show("blind");
@@ -414,7 +416,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		
 		$(".current").removeClass("current");
 		
-		showCaptivateControls(false);
+		showCaptivateControls(false, true);
 	}
 	
 	function onNextCaptivate () {
@@ -433,7 +435,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		}
 	}
 	
-	function loadContents (index, title) {
+	function loadContents (index, title, watch_or_try) {
 		$(".left-message").css("display", "none");
 		
 		currentIndex = index;
@@ -452,13 +454,13 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 			$("#big-title").css("display", "block");
 			$("#big-title").addClass("animated rotateInDownLeft");
 			
-			if (!shownHelp) {
+			if (!shownHelp && watch_or_try == undefined) {
 				showLeftMessage("#left-message-help", true);
 				shownHelp = true;
 			}
 		}, 500);
 		
-		showCaptivateControls(false);
+		showCaptivateControls(false, watch_or_try == undefined);
 
 		pushContentDownForTitle();
 	}
@@ -477,7 +479,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		if (table_of_contents.showing)
 			table_of_contents.toggle();
 		
-		loadContents(index % 2, title);
+		loadContents(index % 2, title, watch_or_try);
 		
 		switch (watch_or_try) {
 			case "watch":
