@@ -141,6 +141,8 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	
 	$(table_of_contents.getElement()).bind("selected", onShowChapter);
 	
+	$(".left-message").click(onClickMessage);
+	
 	$(".ad").hover(onAdHoverIn, onAdHoverOut);
 	$(".ad").click(onClickAd);
 	
@@ -199,8 +201,6 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 			$(id).addClass("animated rollIn");
 		}
 	}
-	
-	window.showLeftMessage = showLeftMessage;
 	
 	function onSlideEntered (event) {
 		var slide = event.Data.slideNumber;
@@ -590,5 +590,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		showLesson(event, 0, title);
 	}
 	
-	window.scrollToNextAd = scrollToNextAd;
+	function onClickMessage (event) {
+		$(event.currentTarget).removeClass("animated rollIn").addClass("animated zoomOutDown");
+	}
 });
