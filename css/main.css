@@ -303,17 +303,18 @@ html, body, p, h1 {
 }
 /* line 69, ../sass/_tutorials.scss */
 #watch-or-try-holder #watch-or-try-bg {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(223, 182, 54, 0.8);
   border-radius: 10px;
-  padding: 10px;
+  border: 3px solid yellow;
+  padding: 10px 20px 20px 20px;
   text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
 }
-/* line 76, ../sass/_tutorials.scss */
+/* line 77, ../sass/_tutorials.scss */
 #watch-or-try-holder #watch-or-try {
   margin: 0 auto;
   height: 100%;
 }
-/* line 80, ../sass/_tutorials.scss */
+/* line 81, ../sass/_tutorials.scss */
 #watch-or-try-holder #watch-or-try h1 {
   color: #74BDE6;
   text-align: center;
@@ -321,7 +322,7 @@ html, body, p, h1 {
   font-style: italic;
   text-shadow: -3px 3px 6px #000;
 }
-/* line 89, ../sass/_tutorials.scss */
+/* line 90, ../sass/_tutorials.scss */
 #watch-or-try-holder span.label {
   font-family: 'Open Sans', sans-serif;
   font-size: 40px;
@@ -330,26 +331,27 @@ html, body, p, h1 {
   margin-left: .25em;
   color: #180fe7;
 }
-/* line 98, ../sass/_tutorials.scss */
+/* line 99, ../sass/_tutorials.scss */
 #watch-or-try-holder .check-button {
   cursor: pointer;
+  margin-top: 1em;
 }
-/* line 101, ../sass/_tutorials.scss */
+/* line 103, ../sass/_tutorials.scss */
 #watch-or-try-holder .check-button:hover span.label {
   color: white;
 }
 
-/* line 107, ../sass/_tutorials.scss */
+/* line 109, ../sass/_tutorials.scss */
 .header {
   width: 100%;
   height: 100%;
   text-align: center;
 }
-/* line 112, ../sass/_tutorials.scss */
+/* line 114, ../sass/_tutorials.scss */
 .header.dark-background {
   background-color: #333;
 }
-/* line 116, ../sass/_tutorials.scss */
+/* line 118, ../sass/_tutorials.scss */
 .header > .centered {
   color: white;
   display: inline-block;
@@ -357,17 +359,17 @@ html, body, p, h1 {
   font-size: 24pt;
   text-shadow: -1px 1px 4px #333;
 }
-/* line 123, ../sass/_tutorials.scss */
+/* line 125, ../sass/_tutorials.scss */
 .header > .centered .palette-gray {
   color: #797979;
   text-shadow: none;
 }
-/* line 128, ../sass/_tutorials.scss */
+/* line 130, ../sass/_tutorials.scss */
 .header > .centered .palette-red {
   color: #D13221;
   text-shadow: none;
 }
-/* line 134, ../sass/_tutorials.scss */
+/* line 136, ../sass/_tutorials.scss */
 .header:before {
   content: '';
   display: inline-block;
@@ -376,14 +378,55 @@ html, body, p, h1 {
   margin-right: -0.25em;
 }
 
-/* line 143, ../sass/_tutorials.scss */
+/* line 145, ../sass/_tutorials.scss */
+.ad-bar {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+}
+/* line 152, ../sass/_tutorials.scss */
+.ad-bar .ad {
+  position: absolute;
+  cursor: pointer;
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24pt;
+  text-shadow: -1px 1px 4px #333;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: .25em .75em;
+  transition: box-shadow .5s linear, background-color .1s linear;
+}
+/* line 165, ../sass/_tutorials.scss */
+.ad-bar .ad img {
+  max-height: 50px;
+  margin-right: .5em;
+}
+/* line 170, ../sass/_tutorials.scss */
+.ad-bar .ad:hover {
+  box-shadow: 3px 3px 6px #000;
+  background-color: rgba(50, 50, 200, 0.8);
+}
+/* line 176, ../sass/_tutorials.scss */
+.ad-bar:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+/* line 185, ../sass/_tutorials.scss */
 .content-holder {
   background-color: #ffe0d0;
   border-radius: 0 50px 50px 0;
   display: none;
 }
 
-/* line 149, ../sass/_tutorials.scss */
+/* line 191, ../sass/_tutorials.scss */
 .content {
   height: 100%;
   overflow: scroll;
@@ -391,34 +434,34 @@ html, body, p, h1 {
   max-width: 800px;
   margin: 0 0 0 auto;
 }
-/* line 157, ../sass/_tutorials.scss */
+/* line 199, ../sass/_tutorials.scss */
 .content h1 {
   font-size: 3rem;
   line-height: 3rem;
   font-weight: bold;
   display: inline-block;
 }
-/* line 164, ../sass/_tutorials.scss */
+/* line 206, ../sass/_tutorials.scss */
 .content > p {
   padding: 1rem 4rem 1rem 2rem;
   line-height: 1.75rem;
   position: relative;
 }
-/* line 170, ../sass/_tutorials.scss */
+/* line 212, ../sass/_tutorials.scss */
 .content .separator-line {
   border-top: 2px solid #900;
   margin: 0 4rem 0 2rem;
   clear: both;
 }
-/* line 176, ../sass/_tutorials.scss */
+/* line 218, ../sass/_tutorials.scss */
 .content .steps {
   padding-left: 2rem;
 }
-/* line 180, ../sass/_tutorials.scss */
+/* line 222, ../sass/_tutorials.scss */
 .content h2 {
   margin: 1rem 4rem 0 2rem;
 }
-/* line 184, ../sass/_tutorials.scss */
+/* line 226, ../sass/_tutorials.scss */
 .content .command-button {
   display: inline-block;
   width: 36px;
@@ -426,12 +469,12 @@ html, body, p, h1 {
   background: url("../command-button.png");
   vertical-align: middle;
 }
-/* line 192, ../sass/_tutorials.scss */
+/* line 234, ../sass/_tutorials.scss */
 .content .step {
   position: relative;
   margin: 1rem 4rem 1rem 2rem;
 }
-/* line 196, ../sass/_tutorials.scss */
+/* line 238, ../sass/_tutorials.scss */
 .content .step .number {
   display: inline-block;
   color: white;
@@ -446,7 +489,7 @@ html, body, p, h1 {
   top: 0;
   left: 0;
 }
-/* line 210, ../sass/_tutorials.scss */
+/* line 252, ../sass/_tutorials.scss */
 .content .step .number:before {
   content: "";
   background-color: #a43;
@@ -455,7 +498,7 @@ html, body, p, h1 {
   height: 30px;
   border-radius: 15px;
 }
-/* line 219, ../sass/_tutorials.scss */
+/* line 261, ../sass/_tutorials.scss */
 .content .step .number span {
   position: absolute;
   top: -1px;
@@ -463,22 +506,22 @@ html, body, p, h1 {
   width: 100%;
   text-align: center;
 }
-/* line 229, ../sass/_tutorials.scss */
+/* line 271, ../sass/_tutorials.scss */
 .content .step p {
   margin: 0 2rem 0 2.5rem;
   padding: .25rem .5rem;
   transition: background-color ease-in-out 1s;
 }
-/* line 235, ../sass/_tutorials.scss */
+/* line 277, ../sass/_tutorials.scss */
 .content .step .current {
   background-color: white;
 }
-/* line 240, ../sass/_tutorials.scss */
+/* line 282, ../sass/_tutorials.scss */
 .content .timesaver {
   margin: 1rem 4rem 1rem 3rem;
   font-style: italic;
 }
-/* line 244, ../sass/_tutorials.scss */
+/* line 286, ../sass/_tutorials.scss */
 .content .timesaver::before {
   content: "Timesaver";
   text-transform: uppercase;
@@ -487,7 +530,7 @@ html, body, p, h1 {
   font-weight: bold;
   color: #35a;
 }
-/* line 254, ../sass/_tutorials.scss */
+/* line 296, ../sass/_tutorials.scss */
 .content .did-you-know {
   margin: 2rem 4rem 2rem 3rem;
   width: 70%;
@@ -497,7 +540,7 @@ html, body, p, h1 {
   padding: 1rem;
   box-shadow: 0px -6px 6px rgba(0, 0, 0, 0.4);
 }
-/* line 263, ../sass/_tutorials.scss */
+/* line 305, ../sass/_tutorials.scss */
 .content .did-you-know:before {
   content: "Did You Know?";
   display: block;
@@ -505,18 +548,18 @@ html, body, p, h1 {
   font-weight: bold;
   padding: 0 0 1rem .5rem;
 }
-/* line 271, ../sass/_tutorials.scss */
+/* line 313, ../sass/_tutorials.scss */
 .content .did-you-know span.intro {
   font-weight: bold;
   font-style: italic;
 }
 
-/* line 278, ../sass/_tutorials.scss */
+/* line 320, ../sass/_tutorials.scss */
 #top-nav {
   padding-bottom: 1rem;
 }
 
-/* line 282, ../sass/_tutorials.scss */
+/* line 324, ../sass/_tutorials.scss */
 .control-bar {
   width: 100%;
   height: 100%;
@@ -524,7 +567,7 @@ html, body, p, h1 {
   text-align: center;
   background: linear-gradient(to bottom, #ffa84c 0%, #ff7b0d 100%);
 }
-/* line 289, ../sass/_tutorials.scss */
+/* line 331, ../sass/_tutorials.scss */
 .control-bar .controls {
   background-color: #a54;
   display: inline-block;
@@ -533,7 +576,7 @@ html, body, p, h1 {
   padding: 5px;
   margin-top: 5px;
 }
-/* line 297, ../sass/_tutorials.scss */
+/* line 339, ../sass/_tutorials.scss */
 .control-bar .controls button {
   background: url("../orange-glossy-buttons-th.png") 0px 0px;
   background-repeat: no-repeat;
@@ -544,48 +587,48 @@ html, body, p, h1 {
   opacity: .5;
   cursor: pointer;
 }
-/* line 307, ../sass/_tutorials.scss */
+/* line 349, ../sass/_tutorials.scss */
 .control-bar .controls button:hover {
   opacity: 1.0;
   -webkit-filter: drop-shadow(-1px 1px 3px rgba(0, 0, 0, 0.5));
 }
-/* line 313, ../sass/_tutorials.scss */
+/* line 355, ../sass/_tutorials.scss */
 .control-bar .controls #back {
   background-position: -55px -99px;
 }
-/* line 317, ../sass/_tutorials.scss */
+/* line 359, ../sass/_tutorials.scss */
 .control-bar .controls #pause {
   background-position: 1px -48px;
 }
-/* line 321, ../sass/_tutorials.scss */
+/* line 363, ../sass/_tutorials.scss */
 .control-bar .controls #pause.paused {
   background-position: 1px 4px;
 }
-/* line 325, ../sass/_tutorials.scss */
+/* line 367, ../sass/_tutorials.scss */
 .control-bar .controls #stop {
   background-position: -55px 4px;
 }
-/* line 329, ../sass/_tutorials.scss */
+/* line 371, ../sass/_tutorials.scss */
 .control-bar .controls #next {
   background-position: 1px -99px;
 }
-/* line 333, ../sass/_tutorials.scss */
+/* line 375, ../sass/_tutorials.scss */
 .control-bar .controls button.playback {
   border: none;
 }
-/* line 337, ../sass/_tutorials.scss */
+/* line 379, ../sass/_tutorials.scss */
 .control-bar .controls .check-container {
   display: inline-block;
   line-height: 48px;
   vertical-align: top;
 }
-/* line 342, ../sass/_tutorials.scss */
+/* line 384, ../sass/_tutorials.scss */
 .control-bar .controls .check-container input {
   margin: 0;
   padding: 0;
 }
 
-/* line 350, ../sass/_tutorials.scss */
+/* line 392, ../sass/_tutorials.scss */
 #success-box {
   position: absolute;
   top: 0;
@@ -599,40 +642,35 @@ html, body, p, h1 {
   background-repeat: no-repeat;
 }
 
-/* line 363, ../sass/_tutorials.scss */
+/* line 405, ../sass/_tutorials.scss */
 .isTable {
   display: table;
 }
 
-/* line 367, ../sass/_tutorials.scss */
+/* line 409, ../sass/_tutorials.scss */
 .isTableRow {
   display: table-row;
 }
 
-/* line 371, ../sass/_tutorials.scss */
+/* line 413, ../sass/_tutorials.scss */
 .isTableCell {
   display: table-cell;
 }
 
-/* line 375, ../sass/_tutorials.scss */
+/* line 417, ../sass/_tutorials.scss */
 .middle {
   vertical-align: middle;
 }
 
-/* line 379, ../sass/_tutorials.scss */
+/* line 421, ../sass/_tutorials.scss */
 #bottom-bar {
-  background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+  background: url(../ribbon.png), linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+  /*	background: url(../ribbon.png);*/
   width: 100%;
   height: 100%;
 }
-/* line 384, ../sass/_tutorials.scss */
-#bottom-bar .round-bar {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 1em;
-  padding: .25em .75em;
-}
 
-/* line 391, ../sass/_tutorials.scss */
+/* line 428, ../sass/_tutorials.scss */
 #big-title {
   position: fixed;
   top: 0;
@@ -643,7 +681,7 @@ html, body, p, h1 {
   position: relative;
   display: none;
 }
-/* line 401, ../sass/_tutorials.scss */
+/* line 438, ../sass/_tutorials.scss */
 #big-title::after {
   content: "";
   background: url(../EllipseBackground.png) no-repeat;
@@ -656,7 +694,7 @@ html, body, p, h1 {
   right: 0;
   z-index: -1;
 }
-/* line 414, ../sass/_tutorials.scss */
+/* line 451, ../sass/_tutorials.scss */
 #big-title p {
   color: #ccf;
   font-size: 3rem;
@@ -666,7 +704,7 @@ html, body, p, h1 {
   text-shadow: -2px 2px 4px #003;
 }
 
-/* line 424, ../sass/_tutorials.scss */
+/* line 461, ../sass/_tutorials.scss */
 #nav-container {
   position: fixed;
   z-index: 4;
@@ -675,19 +713,19 @@ html, body, p, h1 {
   left: 0;
   width: 100%;
 }
-/* line 432, ../sass/_tutorials.scss */
+/* line 469, ../sass/_tutorials.scss */
 #nav-container .button {
   background-color: green;
   transform-origin: 20% 20%;
   transition: transform .1s linear;
 }
-/* line 438, ../sass/_tutorials.scss */
+/* line 475, ../sass/_tutorials.scss */
 #nav-container .button:hover {
   color: white;
   box-shadow: 2px 2px 4px #000;
   transform: scale(1.5);
 }
-/* line 446, ../sass/_tutorials.scss */
+/* line 483, ../sass/_tutorials.scss */
 #nav-container i {
   color: #aaa;
   font-size: 1.5rem;
@@ -698,11 +736,11 @@ html, body, p, h1 {
   display: block;
   line-height: 32px;
 }
-/* line 457, ../sass/_tutorials.scss */
+/* line 494, ../sass/_tutorials.scss */
 #nav-container #toc-button {
   float: left;
 }
-/* line 461, ../sass/_tutorials.scss */
+/* line 498, ../sass/_tutorials.scss */
 #nav-container #toc-searchtext {
   float: right;
   width: 175px;
@@ -715,24 +753,24 @@ html, body, p, h1 {
   padding: .5rem;
   transition: width .5s ease-out, background-color .5s ease-out, color .5s ease-out;
 }
-/* line 474, ../sass/_tutorials.scss */
+/* line 511, ../sass/_tutorials.scss */
 #nav-container #toc-searchtext:hover {
   width: 275px;
   background-color: black;
   color: white;
 }
-/* line 480, ../sass/_tutorials.scss */
+/* line 517, ../sass/_tutorials.scss */
 #nav-container #toc-searchtext:focus {
   outline: 0;
 }
-/* line 485, ../sass/_tutorials.scss */
+/* line 522, ../sass/_tutorials.scss */
 #nav-container #toc-search {
   float: right;
   margin-left: .5rem;
   margin-right: .5rem;
 }
 
-/* line 492, ../sass/_tutorials.scss */
+/* line 529, ../sass/_tutorials.scss */
 .toc {
   position: fixed;
   left: 0;
@@ -743,7 +781,7 @@ html, body, p, h1 {
   opacity: 0;
   pointer-events: none;
 }
-/* line 502, ../sass/_tutorials.scss */
+/* line 539, ../sass/_tutorials.scss */
 .toc .bg {
   position: absolute;
   top: 0;
@@ -755,11 +793,11 @@ html, body, p, h1 {
   z-index: -1;
   transform: translate3d(0, 0, 0);
 }
-/* line 513, ../sass/_tutorials.scss */
+/* line 550, ../sass/_tutorials.scss */
 .toc .bg.animated {
   transition: transform .5s linear;
 }
-/* line 518, ../sass/_tutorials.scss */
+/* line 555, ../sass/_tutorials.scss */
 .toc ul {
   width: 100%;
   margin: 44px 0 0 0;
@@ -767,7 +805,7 @@ html, body, p, h1 {
   color: black;
   list-style: none;
 }
-/* line 525, ../sass/_tutorials.scss */
+/* line 562, ../sass/_tutorials.scss */
 .toc ul li {
   line-height: 40px;
   width: auto;
@@ -779,26 +817,26 @@ html, body, p, h1 {
   overflow: hidden;
   transition: height .5s linear;
 }
-/* line 536, ../sass/_tutorials.scss */
+/* line 573, ../sass/_tutorials.scss */
 .toc ul li.selected {
   background-color: black !important;
   color: white;
   text-shadow: 0 1px 2px black;
   border: 1px solid black;
 }
-/* line 543, ../sass/_tutorials.scss */
+/* line 580, ../sass/_tutorials.scss */
 .toc ul li.hover {
   color: white;
   text-shadow: 0 1px 2px black;
   border: 1px solid black;
 }
-/* line 549, ../sass/_tutorials.scss */
+/* line 586, ../sass/_tutorials.scss */
 .toc ul li span {
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
-/* line 557, ../sass/_tutorials.scss */
+/* line 594, ../sass/_tutorials.scss */
 .message {
   color: white;
   font-size: 1.5rem;
@@ -807,7 +845,7 @@ html, body, p, h1 {
   display: none;
 }
 
-/* line 565, ../sass/_tutorials.scss */
+/* line 602, ../sass/_tutorials.scss */
 .board {
   position: absolute;
   top: 0;
@@ -816,11 +854,11 @@ html, body, p, h1 {
   bottom: 0;
   z-index: 5;
 }
-/* line 573, ../sass/_tutorials.scss */
+/* line 610, ../sass/_tutorials.scss */
 .board .message {
   margin-top: 2.75rem;
 }
-/* line 577, ../sass/_tutorials.scss */
+/* line 614, ../sass/_tutorials.scss */
 .board .card {
   position: absolute;
   width: 200px;
@@ -834,7 +872,7 @@ html, body, p, h1 {
   transform-origin: center top;
   /*overflow: hidden;*/
 }
-/* line 591, ../sass/_tutorials.scss */
+/* line 628, ../sass/_tutorials.scss */
 .board .card .new-indicator {
   position: absolute;
   font-family: 'Open Sans', sans-serif;
@@ -847,7 +885,7 @@ html, body, p, h1 {
   transform: rotate(45deg);
   z-index: 1000;
 }
-/* line 604, ../sass/_tutorials.scss */
+/* line 641, ../sass/_tutorials.scss */
 .board .card h1 {
   font-size: 1.5rem;
   line-height: 1.75rem;
@@ -860,38 +898,38 @@ html, body, p, h1 {
   text-align: center;
   cursor: pointer;
 }
-/* line 617, ../sass/_tutorials.scss */
+/* line 654, ../sass/_tutorials.scss */
 .board .card:hover {
   height: auto !important;
   cursor: wait;
 }
-/* line 621, ../sass/_tutorials.scss */
+/* line 658, ../sass/_tutorials.scss */
 .board .card:hover h1 {
   color: #ff9;
   -webkit-filter: drop-shadow(0px 4px 8px black);
   text-shadow: 0px 1px 0px #888, 0px 2px 0px #666, 0px 3px 0px #444, 0px 4px 5px #001135;
   transition: color .1s linear, text-shadow .25s ease-in-out, background-color .1s linear;
 }
-/* line 628, ../sass/_tutorials.scss */
+/* line 665, ../sass/_tutorials.scss */
 .board .card:hover p {
   /*				overflow: visible !important;*/
   /*				height: auto !important;*/
 }
-/* line 633, ../sass/_tutorials.scss */
+/* line 670, ../sass/_tutorials.scss */
 .board .card:hover .buttons {
   position: relative;
 }
-/* line 638, ../sass/_tutorials.scss */
+/* line 675, ../sass/_tutorials.scss */
 .board .card p {
   padding: 1rem;
   cursor: pointer;
 }
-/* line 643, ../sass/_tutorials.scss */
+/* line 680, ../sass/_tutorials.scss */
 .board .card .pholder {
   overflow: hidden;
   transition: height .2s ease-out;
 }
-/* line 648, ../sass/_tutorials.scss */
+/* line 685, ../sass/_tutorials.scss */
 .board .card .buttons {
   /*
   position: absolute;
@@ -900,7 +938,7 @@ html, body, p, h1 {
   position: relative;
   width: 100%;
 }
-/* line 656, ../sass/_tutorials.scss */
+/* line 693, ../sass/_tutorials.scss */
 .board .card .buttons .button {
   display: inline-block;
   width: 50%;
@@ -916,33 +954,33 @@ html, body, p, h1 {
   transition: background-color .25s ease-out, color .1s ease-out, text-shadow .1s ease-out;
   position: relative;
 }
-/* line 671, ../sass/_tutorials.scss */
+/* line 708, ../sass/_tutorials.scss */
 .board .card .buttons .button:hover {
   text-shadow: 0px 1px 0px #000;
   /*#999;*/
   background-color: #333;
   /*#666;*/
 }
-/* line 675, ../sass/_tutorials.scss */
+/* line 712, ../sass/_tutorials.scss */
 .board .card .buttons .button:hover .text {
   color: white;
 }
-/* line 679, ../sass/_tutorials.scss */
+/* line 716, ../sass/_tutorials.scss */
 .board .card .buttons .button:hover .icon {
   color: #bbb;
 }
-/* line 684, ../sass/_tutorials.scss */
+/* line 721, ../sass/_tutorials.scss */
 .board .card .buttons .button .text {
   line-height: 3rem;
   display: inline-block;
 }
-/* line 689, ../sass/_tutorials.scss */
+/* line 726, ../sass/_tutorials.scss */
 .board .card .buttons .button .icon {
   line-height: 3rem;
   color: #454ebd;
   padding-left: .5rem;
 }
-/* line 696, ../sass/_tutorials.scss */
+/* line 733, ../sass/_tutorials.scss */
 .board .card .buttons .watchit {
   float: left;
   border-radius: 0 0 0 10px;
@@ -952,20 +990,20 @@ html, body, p, h1 {
   background-position: center center;
   */
 }
-/* line 706, ../sass/_tutorials.scss */
+/* line 743, ../sass/_tutorials.scss */
 .board .card .buttons .tryit {
   float: right;
   border-radius: 0 0 10px 0;
   border-left: 1px solid #aaa;
 }
-/* line 712, ../sass/_tutorials.scss */
+/* line 749, ../sass/_tutorials.scss */
 .board .card .buttons::after {
   content: "";
   display: block;
   clear: both;
 }
 
-/* line 721, ../sass/_tutorials.scss */
+/* line 758, ../sass/_tutorials.scss */
 .squaredTwo {
   width: 48px;
   height: 48px;
@@ -982,7 +1020,7 @@ html, body, p, h1 {
   box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
   display: inline-block;
 }
-/* line 730, ../sass/_tutorials.scss */
+/* line 767, ../sass/_tutorials.scss */
 .squaredTwo label {
   width: 40px;
   height: 40px;
@@ -1004,7 +1042,7 @@ html, body, p, h1 {
   }
   */
 }
-/* line 739, ../sass/_tutorials.scss */
+/* line 776, ../sass/_tutorials.scss */
 .squaredTwo label:after {
   content: '';
   width: 25px;
@@ -1024,12 +1062,50 @@ html, body, p, h1 {
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-/* line 759, ../sass/_tutorials.scss */
+/* line 796, ../sass/_tutorials.scss */
 .squaredTwo input[type=checkbox] {
   visibility: hidden;
 }
-/* line 761, ../sass/_tutorials.scss */
+/* line 798, ../sass/_tutorials.scss */
 .squaredTwo input[type=checkbox]:checked + label:after {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
+}
+
+/* line 804, ../sass/_tutorials.scss */
+.left-message {
+  position: absolute;
+  width: 75%;
+  padding: 2em;
+  display: none;
+  font-size: 1.5rem;
+}
+/* line 811, ../sass/_tutorials.scss */
+.left-message h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+/* line 816, ../sass/_tutorials.scss */
+.left-message .bg {
+  background-color: #09BE60;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  opacity: .9;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  box-shadow: -6px 10px 30px #888;
+}
+/* line 830, ../sass/_tutorials.scss */
+.left-message .interior {
+  color: white;
+  text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* line 837, ../sass/_tutorials.scss */
+#left-message-help .bg {
+  background-color: #0993BE;
 }

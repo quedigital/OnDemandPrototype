@@ -98,11 +98,11 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 				}
 			},
 		];
-		
+	
+	var AD_SPACING = 30, AD_TRANSITION = 1500, AD_DELAY = 8000;
+	
 	var currentIndex = 1;
 	var currentType = "";
-	
-//	loadContents();	
 	
 	var table_of_contents = new TOC($("body"));
 	
@@ -113,9 +113,15 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	var cp, cp_events;
 	var captivateMapping = [];
 	
-	var started = false;	
+	var started = false;
+	var shownHelp = false;
+	
+	var currentAd = undefined;
+	var inAd = false;
 	
 	var frame = $("iframe");
+	
+	positionAds();
 	
 	$(document).tooltip();
 	
@@ -135,9 +141,20 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	
 	$(table_of_contents.getElement()).bind("selected", onShowChapter);
 	
+	$(".ad").hover(onAdHoverIn, onAdHoverOut);
+	$(".ad").click(onClickAd);
+	
 	$(window).keydown(onKeyDown);
 	
+	scrollToNextAd();
+	
+	setTimeout(beginIntro, 250);
+	
 //	showHint("watch or try buttons");
+	
+	function beginIntro () {
+		showLeftMessage("#left-message-intro", true);
+	}
 	
 	function checkForCaptivate () {
 		if (window.frames[0].cpAPIInterface) {
@@ -159,6 +176,8 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 
 	function onWindowResize (event) {
 		pushContentDownForTitle();
+		
+		showLeftMessage("#left-message-intro", false);
 	}
 	
 	function pushContentDownForTitle () {
@@ -166,6 +185,22 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		
 		$(".content").css("padding-top", h);
 	}
+	
+	function showLeftMessage (id, animate) {
+		animate = animate == undefined ? true : animate;
+		
+		if (animate) {
+			$(id).removeClass("animated rollIn").css({ display: "block" });
+		}
+		
+		$(id).position({ my: "center center", at: "center center", of: $(id).parent(), collision: "none" });
+		
+		if (animate) {
+			$(id).addClass("animated rollIn");
+		}
+	}
+	
+	window.showLeftMessage = showLeftMessage;
 	
 	function onSlideEntered (event) {
 		var slide = event.Data.slideNumber;
@@ -296,8 +331,6 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		}
 	}
 	
-	window.showCaptivateControls = showCaptivateControls;
-	
 	function setCaptivateMapping (keys) {
 		captivateMapping = keys;
 	}
@@ -316,6 +349,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 		
 	function playWatchIt () {
 		hideHints();
+		$(".left-message").css("display", "none");
 		
 //		var check = $("#success-box");
 //		check.hide();
@@ -337,6 +371,7 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	
 	function playTryIt () {
 		hideHints();
+		$(".left-message").css("display", "none");
 		
 //		var check = $("#success-box");
 //		check.hide();
@@ -399,6 +434,8 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	}
 	
 	function loadContents (index, title) {
+		$(".left-message").css("display", "none");
+		
 		currentIndex = index;
 		
 		var item = toc[currentIndex];
@@ -414,6 +451,11 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 			$(".content-holder").show("drop", { direction: "right" });
 			$("#big-title").css("display", "block");
 			$("#big-title").addClass("animated rotateInDownLeft");
+			
+			if (!shownHelp) {
+				showLeftMessage("#left-message-help", true);
+				shownHelp = true;
+			}
 		}, 500);
 		
 		showCaptivateControls(false);
@@ -432,7 +474,8 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	}
 	
 	function showLesson (event, index, title, watch_or_try) {
-		table_of_contents.toggle();
+		if (table_of_contents.showing)
+			table_of_contents.toggle();
 		
 		loadContents(index % 2, title);
 		
@@ -460,4 +503,90 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 			table_of_contents.hide();
 		}
 	}
+	
+	function positionAds () {
+		var ads = $(".ad");
+		
+		ads.clone().appendTo(".ad-bar");
+		
+		ads = $(".ad");
+		
+		var x = 0;
+		
+		for (var i = 0; i < ads.length; i++) {
+			var ad = ads.eq(i);
+			ad.css({ left: x, top: 8 });
+			x += ad.outerWidth() + AD_SPACING;
+		}	
+	}
+	
+	function scrollToNextAd () {
+		if (!inAd && !table_of_contents.showing && !$(".control-bar").is(":visible")) {
+			var animate = true;
+		
+			var half_n = Math.floor($(".ad").length * .5);
+		
+			if (currentAd == undefined) {
+				currentAd = half_n;
+				animate = false;
+			}
+		
+			var w = $(".ad-bar").parent().width();
+		
+			var desired_left = getMiddleOfCurrentAd();
+
+			// if the edge of the last ad is about to come on-screen, jump us to its first occurrence
+			var ads = $(".ad");
+			var last_ad = ads.eq(ads.length - 1);
+			var x = last_ad.position().left + desired_left;
+			if (x < w) {
+				currentAd -= half_n + 1;
+			
+				var jump_left = getMiddleOfCurrentAd();
+				$(".ad-bar").css({ left: jump_left });
+			
+				currentAd++;
+			
+				desired_left = getMiddleOfCurrentAd();
+			}				
+		
+			if (animate) {
+				$(".ad-bar").animate({ left: desired_left }, AD_TRANSITION, "easeInOutCubic");
+			} else {
+				$(".ad-bar").css({ left: desired_left });
+			}
+		
+			currentAd++;
+		}
+		
+		setTimeout(scrollToNextAd, AD_DELAY);
+	}
+	
+	function getMiddleOfCurrentAd () {
+		var ad = $(".ad").eq(currentAd);
+		
+		var w = $(".ad-bar").parent().width();
+
+		var middle_of_next_ad = ad.position().left + ad.width() * .5 + AD_SPACING;
+		var middle_of_screen = w * .5;
+		
+		var desired_left = middle_of_screen - middle_of_next_ad;
+		
+		return desired_left;		
+	}
+	
+	function onAdHoverIn () {
+		inAd = true;
+	}
+	
+	function onAdHoverOut () {
+		inAd = false;
+	}
+	
+	function onClickAd (event) {
+		var title = $(event.currentTarget).text();
+		showLesson(event, 0, title);
+	}
+	
+	window.scrollToNextAd = scrollToNextAd;
 });
