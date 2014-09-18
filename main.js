@@ -17,7 +17,7 @@ requirejs.config({
 		}
 });
 
-require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify.min", "TOC", "CardManager"], function ($, dialog) {
+require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquery.layout-latest", "notify.min", "TOC", "CardManager"], function ($, dialog, imagesLoaded) {
 	var pageLayout = $("body").layout({
 										applyDefaultStyles: true, resizable: false, slidable: false, closable: false,
 										spacing_open: 0, spacing_closed: 0,
@@ -150,11 +150,35 @@ require(["jquery", "vex.dialog.min", "jqueryui", "jquery.layout-latest", "notify
 	
 	scrollToNextAd();
 	
-	setTimeout(beginIntro, 250);
+	imagesLoaded(document, onImagesLoaded);
 	
-//	showHint("watch or try buttons");
+	function onImagesLoaded () {
+		$("#screen-cover").css("background-color", "rgba(0, 0, 0, .7)");
+
+		var h1 = $("#buy-now").outerHeight();
+		var h2 = $("#buy-now-container").outerHeight();
+		var w = $("#buy-now-container").width();
+		var p = Math.floor(((h2 - h1) * .5) / w * 100);
+		
+		$("#buy-now").css("margin-top", p + "%");
+		
+		$("#buy-now").addClass("animated flipInX").css("display", "block");
+		
+		setTimeout(function () {
+			$("#caption").addClass("animated lightSpeedIn").css("visibility", "visible");
+		}, 1500);
+		
+		$("#buy-now").click(function () {
+			$("#screen-cover").addClass("animated fadeOut");
+			$("#buy-now-container").addClass("animated flipOutX");
+			setTimeout(beginIntro, 500);
+		});
+	}
 	
 	function beginIntro () {
+		$("#screen-cover").hide();
+		$("#buy-now-container").hide();
+		
 		showLeftMessage("#left-message-intro", true);
 	}
 	

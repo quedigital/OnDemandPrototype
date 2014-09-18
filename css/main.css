@@ -1109,3 +1109,83 @@ html, body, p, h1 {
 #left-message-help .bg {
   background-color: #0993BE;
 }
+
+/* line 842, ../sass/_tutorials.scss */
+#screen-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 1000 !important;
+  transition: background-color 1.0s ease-out;
+}
+
+/* line 853, ../sass/_tutorials.scss */
+#buy-now-container {
+  z-index: 1100 !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* line 863, ../sass/_tutorials.scss */
+#buy-now-container #buy-now {
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  background: url(images/paper.png);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  padding: 2em;
+  color: #113;
+  box-shadow: 0px 10px 20px #333;
+  text-align: center;
+  display: none;
+}
+/* line 878, ../sass/_tutorials.scss */
+#buy-now-container #buy-now p {
+  padding-bottom: 1.5em;
+}
+/* line 882, ../sass/_tutorials.scss */
+#buy-now-container #buy-now #closer {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  cursor: pointer;
+  opacity: .5;
+}
+/* line 890, ../sass/_tutorials.scss */
+#buy-now-container #buy-now #closer:hover {
+  opacity: 1;
+}
+/* line 895, ../sass/_tutorials.scss */
+#buy-now-container #buy-now #bottom-banner {
+  position: absolute;
+  border-radius: 0 0 15px 15px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  line-height: 1.5em;
+}
+/* line 904, ../sass/_tutorials.scss */
+#buy-now-container #buy-now #bottom-banner img {
+  width: 50%;
+}
+/* line 908, ../sass/_tutorials.scss */
+#buy-now-container #buy-now #bottom-banner #caption {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 1.5em;
+  visibility: hidden;
+}

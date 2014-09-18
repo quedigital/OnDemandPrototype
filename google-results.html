@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<html>
+<head>
+<style>
+	html, body {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#fake-top {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	
+	#fake-results {
+		position: absolute;
+		top: 260px;
+		left: 0;
+	}
+	.heading {
+		height: 60px;
+		background-color: rgb(241, 241, 241);
+	}
+	
+	.title {
+		font-size: 18px;
+		color: #1a0dab;
+		cursor: pointer;
+	}
+	
+	.title:hover {
+		text-decoration: underline;
+	}
+	
+	#result {
+		font-family: arial, sans-serif;
+		position: absolute;
+		top: 175px;
+		left: 136px;
+	}
+	
+	.url {
+		color: #006621;
+		font-size: 13px;
+	}
+	
+	.downarrow {
+		margin-top: -4px;
+		margin-left: 3px;
+		left: 0;
+		border-color: #00591E transparent;
+		border-style: solid;
+		border-width: 4px 4px 0 4px;
+		width: 0;
+		height: 0;
+		top: 50%;
+		position: absolute;
+		left: 0;
+	}
+	
+	.url a {
+		position: relative;
+		margin-right: 1.5em;
+		margin-left: .5em;
+	}
+	
+	.company {
+		color: #777;
+	}
+	
+	.desc {
+		line-height: 1.4;
+		word-wrap: break-word;
+		color: #545454;
+		font-size: small;
+		width: 512px;
+	}
+	
+	.title a {
+		text-decoration: inherit;
+	}
+	
+	.title a:visited {
+		color: inherit;
+	}
+</style>
+</head>
+<body>
+<img id="fake-top" src="css/images/GoogleTop.png"/>
+<img id="fake-results" src="css/images/GoogleResults.png"/>
+<div class="heading">
+	<div id="result">
+		<div class="title"><a href="index.html">Using iCloud on the Mac</a></div>
+		<div class="url">https://ondemand.quepublishing.com/mavericks.html<a><span class="downarrow"></span></a><span class="company">Pearson</span><a class="company"><span class="downarrow"</span></a></div>
+		<div class="desc">After you enable an iCloud service on a device … You can specify what type of information is stored in iCloud …</div>
+	</div>
+</div>
+</body>
+</html>
