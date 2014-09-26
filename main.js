@@ -3,6 +3,7 @@ requirejs.config({
 	paths: {
 		"jquery": "jquery-1.11.0.min",
 		"jqueryui": "jquery-ui-1.11.1.custom.min",
+		"jquery.domline": "jquery.domline.min"
 	},
 	
 	shim: {
@@ -13,11 +14,15 @@ requirejs.config({
 			"notify.min": {
 				export: "$",
 				deps: ['jquery']
+			},
+			"jquery.domline": {
+				export: "$",
+				deps: ['jquery']
 			}
 		}
 });
 
-require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquery.layout-latest", "notify.min", "TOC", "CardManager"], function ($, dialog, imagesLoaded) {
+require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", "jqueryui", "jquery.layout-latest", "notify.min", "TOC", "CardManager"], function ($, dialog, imagesLoaded) {
 	var pageLayout = $("body").layout({
 										applyDefaultStyles: true, resizable: false, slidable: false, closable: false,
 										spacing_open: 0, spacing_closed: 0,
@@ -115,6 +120,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 	
 	var started = false;
 	var shownHelp = false;
+	var fromSearch = false;
 	
 	var currentAd = undefined;
 	var inAd = false;
@@ -152,6 +158,11 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 	
 	imagesLoaded(document, onImagesLoaded);
 	
+	if (location.search != "") {
+		fromSearch = true;
+		loadContents(0, "Creating Aliases");
+	}
+	
 	function onImagesLoaded () {
 		$("#screen-cover").css("background-color", "rgba(0, 0, 0, .7)");
 
@@ -179,7 +190,78 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 		$("#screen-cover").hide();
 		$("#buy-now-container").hide();
 		
-		showLeftMessage("#left-message-intro", true);
+		if (!fromSearch) {
+			showLeftMessage("#left-message-intro", true);
+			
+			setTimeout(function () { drawLines(); }, 1500);
+		} else if (fromSearch) {
+			showLeftMessage("#left-message-help", true);
+			shownHelp = true;
+		}
+	}
+	
+	function drawLines () {
+		var elem1 = $("#popular");
+		var bounds1 = elem1[0].getBoundingClientRect();
+		var pt1 = { x: bounds1.left + bounds1.width * .5, y: bounds1.top + bounds1.height };
+		var popularX = bounds1.left + bounds1.width * .5;
+
+		var elem2 = $("#bottom-bar");
+		var bounds2 = elem2[0].getBoundingClientRect();
+		var pt2 = { x: bounds1.left + bounds1.width * .5, y: bounds2.top };
+		
+		var options = { lineWidth: 4, lineColor: "#FFEB5F" };
+				
+		$.line(pt1, pt2, options);
+		
+		elem1 = $("#search");
+		bounds1 = elem1[0].getBoundingClientRect();
+		pt1 = { x: bounds1.left + bounds1.width * .5, y: bounds1.top + bounds1.height };
+		var searchX = bounds1.left + bounds1.width * .5;
+		
+		elem2 = $("#left-message-intro");
+		var bounds3 = elem2[0].getBoundingClientRect();
+			
+		pt2 = { x: bounds1.left + bounds1.width * .5, y: (bounds3.top + bounds3.height + bounds2.top) * .5 };
+
+		$.line(pt1, pt2, options);
+		
+		if (searchX > popularX) {
+		
+			var elem3 = $("#content-pane");
+			var bounds4 = elem3[0].getBoundingClientRect();
+		
+			pt1 = { x: bounds4.left + bounds4.width, y: pt2.y };
+			
+			$.line(pt2, pt1, options);
+		
+			elem1 = $("#left-message-intro");
+			bounds1 = elem1[0].getBoundingClientRect();
+			elem2 = $("#nav-container");
+			bounds2 = elem2[0].getBoundingClientRect();
+		
+			pt2 = { x: pt1.x, y: (bounds1.top + bounds2.top) * .5 };
+		
+			$.line(pt1, pt2, options);
+		
+			elem1 = $("#toc-button");
+			bounds1 = elem1[0].getBoundingClientRect();
+			pt1 = { x: bounds1.left + bounds1.width * .5, y: bounds1.top + bounds1.height };
+		
+			$.line(pt2, { x: pt1.x, y: pt2.y }, options);
+			$.line({ x: pt1.x, y: pt2.y }, pt1, options);
+		} else {
+			elem1 = $("#toc-button");
+			bounds1 = elem1[0].getBoundingClientRect();
+			pt1 = { x: bounds1.left + bounds1.width * .5, y: bounds1.top + bounds1.height };
+		
+			$.line(pt2, { x: pt1.x, y: pt2.y }, options);
+			$.line({ x: pt1.x, y: pt2.y }, pt1, options);
+		}
+	}
+	
+	function eraseLines () {
+		$(".jquery-line").remove();
 	}
 	
 	function checkForCaptivate () {
@@ -204,6 +286,10 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 		pushContentDownForTitle();
 		
 		showLeftMessage("#left-message-intro", false);
+		
+		if ($("#left-message-intro").is(":visible")) {
+			setTimeout(function () { eraseLines(); drawLines(); }, 250);
+		}
 	}
 	
 	function pushContentDownForTitle () {
@@ -376,6 +462,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 	function playWatchIt () {
 		hideHints();
 		$(".left-message").css("display", "none");
+		eraseLines();
 		
 //		var check = $("#success-box");
 //		check.hide();
@@ -398,6 +485,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 	function playTryIt () {
 		hideHints();
 		$(".left-message").css("display", "none");
+		eraseLines();
 		
 //		var check = $("#success-box");
 //		check.hide();
@@ -461,6 +549,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 	
 	function loadContents (index, title, watch_or_try) {
 		$(".left-message").css("display", "none");
+		eraseLines();
 		
 		currentIndex = index;
 		
@@ -478,7 +567,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 			$("#big-title").css("display", "block");
 			$("#big-title").addClass("animated rotateInDownLeft");
 			
-			if (!shownHelp && watch_or_try == undefined) {
+			if (!fromSearch && !shownHelp && watch_or_try == undefined) {
 				showLeftMessage("#left-message-help", true);
 				shownHelp = true;
 			}
@@ -616,5 +705,6 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jqueryui", "jquer
 	
 	function onClickMessage (event) {
 		$(event.currentTarget).removeClass("animated rollIn").addClass("animated zoomOutDown");
+		eraseLines();
 	}
 });
