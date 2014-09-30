@@ -125,6 +125,8 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 	var currentAd = undefined;
 	var inAd = false;
 	
+	var autoScroll = true;
+	
 	var frame = $("iframe");
 	
 	positionAds();
@@ -140,6 +142,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 	$("#pause").click(onPauseCaptivate);
 	$("#stop").click(onStopCaptivate);
 	$("#next").click(onNextCaptivate);
+	$("#auto-scroll-id").change(onChangeAutoScroll);
 	
 	$("#toc-button").click(onClickTOC);
 	
@@ -267,6 +270,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 	function checkForCaptivate () {
 		if (window.frames[0].cpAPIInterface) {
 			cp = window.frames[0].cpAPIInterface;
+			window.cp = cp;
 			cp_events = window.frames[0].cpAPIEventEmitter;
 			onCaptivateLoaded();
 		} else {
@@ -293,6 +297,8 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 	}
 	
 	function pushContentDownForTitle () {
+		console.log($("#big-title").outerHeight());
+		console.log($(".content").offset().top);
 		var h = $("#big-title").outerHeight() - $(".content").offset().top - $("#content-pane").scrollTop();
 		
 		$(".content").css("padding-top", h);
@@ -313,6 +319,8 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 	}
 	
 	function onSlideEntered (event) {
+		if (!autoScroll) return;
+		
 		var slide = event.Data.slideNumber;
 		
 		console.log("slide " + slide);
@@ -535,6 +543,10 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 		cp.next();
 	}
 	
+	function onChangeAutoScroll () {
+		autoScroll = $("#auto-scroll-id").prop("checked");
+	}
+	
 	function hideHints () {
 		$(".notifyjs-container").trigger("notify-hide");
 	}
@@ -554,7 +566,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 		currentIndex = index;
 		
 		var item = toc[currentIndex];
-		$(".content").load(item.html);
+		$(".content").load(item.html, onLoaded);
 		
 		$("#big-title p").text(title);
 		
@@ -562,7 +574,7 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 		$(".content-holder").hide();
 		$("#content-pane").scrollTop(0);
 		
-		setTimeout(function () {
+		setTimeout(function () {			
 			$(".content-holder").show("drop", { direction: "right" });
 			$("#big-title").css("display", "block");
 			$("#big-title").addClass("animated rotateInDownLeft");
@@ -570,12 +582,62 @@ require(["jquery", "vex.dialog.min", "imagesloaded.pkgd.min", "jquery.domline", 
 			if (!fromSearch && !shownHelp && watch_or_try == undefined) {
 				showLeftMessage("#left-message-help", true);
 				shownHelp = true;
-			}
+			}			
+			
+			pushContentDownForTitle();
 		}, 500);
 		
 		showCaptivateControls(false, watch_or_try == undefined);
-
-		pushContentDownForTitle();
+	}
+	
+	function onLoaded () {
+		$(".step").click(onClickStep);
+	}
+	
+	function onClickStep (event) {
+		var slide;
+		
+		var t = $(event.target);
+		var subpart = getSubpart(t);
+		var slide = getSlideFromSubpart(subpart);
+		if (slide) {
+			slide = slide - 1;
+		} else {
+			var thisStep = $(event.currentTarget);
+			var number = thisStep.find(".number").text();
+			slide = getSlideFromStepNumber(number);
+			if (slide) {
+				slide = slide - 1;
+			}
+		}
+		
+		$("iframe")[0].contentWindow.cpCmndGotoSlideAndResume = slide;
+	}
+	
+	function getSlideFromStepNumber (num) {
+		for (var i = 0; i < captivateMapping.length; i++) {
+			if (captivateMapping[i].step == num) {
+				return captivateMapping[i].slide;
+			}
+		}
+		return undefined;
+	}
+	
+	function getSubpart (el) {
+		while (el && !el.hasClass("step")) {
+			var id = el.attr("id");
+			if (id) return id;
+			el = el.parent();
+		}
+	}
+	
+	function getSlideFromSubpart (sub) {
+		for (var i = 0; i < captivateMapping.length; i++) {
+			if (captivateMapping[i].sub == "#" + sub) {
+				return captivateMapping[i].slide;
+			}
+		}
+		return undefined;
 	}
 	
 	function onClickTOC () {

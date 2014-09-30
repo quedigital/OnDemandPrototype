@@ -234,6 +234,7 @@ html, body, p, h1 {
 	.step {
 		position: relative;
 		margin: 1rem 4rem 1rem 2rem;
+		cursor: pointer;
 		
 		.number {
 			display: inline-block;
@@ -450,11 +451,16 @@ html, body, p, h1 {
 	
 	p {
 		color: #ccf;
-		font-size: 3rem;
+		font-size: 2.5rem;
+		line-height: 2.5rem;
 		font-weight: bold;
-		line-height: 3rem;
-		padding: .5rem .25rem 1rem 2rem;
+		padding: .5rem .25rem .5rem 2rem;
 		text-shadow: -2px 2px 4px #003;
+		
+		@media screen and (max-width: 800px) {
+			font-size: 1.75rem;
+			line-height: 1.75rem;
+		}
 	}
 }
 
